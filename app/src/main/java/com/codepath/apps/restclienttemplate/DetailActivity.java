@@ -22,8 +22,6 @@ public class DetailActivity extends AppCompatActivity {
     TextView tvScreenNameDetail;
     TextView tvCreatedAtDetail;
     TextView tvBodyDetail;
-//
-//    Tweet tweet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +34,17 @@ public class DetailActivity extends AppCompatActivity {
         tvCreatedAtDetail = findViewById(R.id.tvCreatedAtDetail);
         tvBodyDetail = findViewById(R.id.tvBodyDetail);
 
-        Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweet"));
+        Tweet tweet = Parcels.unwrap(getIntent().getParcelableExtra("tweetDetail"));
         Log.i("DetailActivity", "success get in to the detail page");
 
-        tvBodyDetail.setText(tweet.getBody());
-        tvNameDetail.setText(tweet.user.getName());
-        tvScreenNameDetail.setText(tweet.user.getScreenName());
+        tvBodyDetail.setText(tweet.body);
+        tvNameDetail.setText(tweet.user.name);
+        tvScreenNameDetail.setText(tweet.user.screenName);
         tvCreatedAtDetail.setText(tweet.getFormattedTimestamp());
 
         RequestOptions requestOptions = new RequestOptions();
         requestOptions = requestOptions.transform(new CenterCrop(), new RoundedCorners(80)).placeholder(R.drawable.ic_launcher);
-        //Glide.with(this).load(tweet.user.profileImageUrl).into(ivProfileImageDetail);
-        Glide.with(this).load(tweet.user.getProfileImageUrl()).apply(requestOptions).into(ivProfileImageDetail);
+        Glide.with(this).load(tweet.user.profileImageUrl).into(ivProfileImageDetail);
+        Glide.with(this).load(tweet.user.profileImageUrl).apply(requestOptions).into(ivProfileImageDetail);
     }
 }

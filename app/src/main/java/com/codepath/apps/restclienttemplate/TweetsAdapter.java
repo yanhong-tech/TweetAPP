@@ -100,7 +100,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
                 public void onClick(View v) {
                     //Navigate to detail activity on tap
                     Intent i = new Intent(context, DetailActivity.class);
-                    i.putExtra("tweet", Parcels.wrap(tweet));
+                    i.putExtra("tweetDetail", Parcels.wrap(tweet));
                     context.startActivity(i);
                 }
             });
